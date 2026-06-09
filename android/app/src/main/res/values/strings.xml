@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MJ7-Kunci</string>
+    <string name="title_activity_main">MJ7-Kunci</string>
+    <string name="package_name">com.mj7.kunci</string>
+    <string name="custom_url_scheme">com.mj7.kunci</string>
+</resources>

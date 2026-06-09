@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head><title>🔒 TERKUNCI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;user-select:none;}
+body{background:radial-gradient(circle,black,#0a0f0a);color:#0f0;font-family:monospace;height:100vh;display:flex;justify-content:center;align-items:center;}
+.box{text-align:center;background:rgba(0,0,0,0.9);padding:30px;border-radius:30px;border:2px solid #0f0;box-shadow:0 0 20px #0f0;width:90%;max-width:350px;}
+h1{font-size:1.5rem;animation:blink 0.8s infinite;}
+@keyframes blink{50%{opacity:0;}}
+input{background:black;color:#0f0;border:2px solid #0f0;padding:12px;font-size:1.3rem;text-align:center;width:80%;margin:15px 0;border-radius:12px;}
+button{background:black;color:#0f0;border:2px solid #0f0;padding:10px 25px;border-radius:30px;cursor:pointer;}
+.counter{margin-top:15px;font-size:12px;color:#f00;}
+.footer{margin-top:20px;font-size:9px;opacity:0.6;}
+</style>
+<script>
+const PIN="0812";
+let fail=0;
+history.pushState(null,null,location.href);
+window.onpopstate=()=>{history.go(1);alert("🔒 Masukkan PIN!");};
+window.onbeforeunload=()=>"🔒 Sistem terkunci!";
+function cek(){
+  let pin=document.getElementById('pin').value;
+  if(pin===PIN){
+    alert("✅ PIN BENAR!");
+    window.location.href="https://google.com";
+  }else{
+    fail++;
+    document.getElementById('counter').innerHTML="⚠️ GAGAL: "+fail+"/3";
+    if(fail>=3){
+      alert("💀 DATA DIHAPUS! 💀");
+      document.querySelector('.box').style.borderColor="#f00";
+    }
+    document.getElementById('pin').value="";
+  }
+}
+document.body.addEventListener('touchstart',()=>{
+  if(!document.fullscreenElement) document.documentElement.requestFullscreen();
+});
+</script>
+</head>
+<body>
+<div class="box">
+<h1>🔒 SISTEM TERKUNCI 🔒</h1>
+<p>⚠️ Masukkan PIN ⚠️</p>
+<input type="password" id="pin" placeholder="****" maxlength="6" autofocus>
+<br><button onclick="cek()">BUKA</button>
+<div id="counter" class="counter"></div>
+<div class="footer">© MJ7-ID</div>
+</div>
+</body>
+</html>
